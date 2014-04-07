@@ -71,3 +71,8 @@ turn p1 p2 p3
     where 
       eps = 0.01
       cp = (cross_k (sub p2 p1) (sub p3 p2))
+
+turns :: [Point] -> [Direction]
+turns ps = case ps of
+     (p1:p2:p3:ps) -> (turn p1 p2 p3) : (turns (p2:p3:ps))
+     ps -> []
